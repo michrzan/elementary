@@ -111,6 +111,8 @@ class SlackWebClient(SlackClient):
                 attachments=(
                     json.dumps(message.attachments) if message.attachments else None
                 ),
+                unfurl_links=False,
+                unfurl_media=False,
             )
             return True
         except SlackApiError as err:
@@ -267,6 +269,8 @@ class SlackWebhookClient(SlackClient):
                 text=message.text,
                 blocks=message.blocks,
                 attachments=message.attachments,
+                unfurl_links=False,
+                unfurl_media=False,
             )
         if response.status_code == OK_STATUS_CODE:
             return True
